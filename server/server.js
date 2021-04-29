@@ -1,5 +1,6 @@
 // Required tech.
 const express = require('express');
+const routes = require('./Routes');
 const path = require('path');
 
 // Database setup.
@@ -10,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // for socket.io intigration.
-var http = require('http').Server(app)
+var http = require('http').Server(app);
 
 // extra lines for potential session data and other such nonsense
 
