@@ -20,5 +20,10 @@ const loveItsSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    seen: Date,
+    seen: {
+      by: [{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+      }]
+    }
 });
