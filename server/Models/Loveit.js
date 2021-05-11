@@ -6,15 +6,17 @@ const { Schema } = mongoose;
 const loveItsSchema = new Schema({
     text: {
         type: String,
-        maxLength: 300,
+        minLength: 1,
+        maxLength: 400,
+
     },
     toUser: [{
       type: Schema.Types.ObjectId,
       ref: 'user',  
     }],
     fromUser: {
-        type: Schema.Types.ObjectId,
-        ref: 'user',
+        type: String,
+        required: true
     },
     created: {
         type: Date,
