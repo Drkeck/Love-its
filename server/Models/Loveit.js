@@ -18,12 +18,20 @@ const loveItsSchema = new Schema({
     },
     created: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: timestamp => moment(timestamp).format('MM DO, YY [at] hh:mm a')
     },
-    seen: {
-      by: [{
+    seen: [{
+      by: {
         type: Schema.Types.ObjectId,
         ref: 'user'
-      }]
+      }
+    }]
+},
+{
+    toJSON: {
+        getters: true
     }
-});
+}
+);
+
