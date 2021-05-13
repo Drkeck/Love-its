@@ -43,9 +43,24 @@ router.post('/login', (req ,res) => {
             return
         }
         
-        //sessionshere
+        //sessions here
+        // for now we send the user data over to them, we will get sessions and user auth on the way later after we establish the rest of the api.
         res.json(dbUserData);
 
-    })
+    });
 
-})
+});
+
+// POST logout of the service.
+router.post('/logout', (req, res) => {
+    // check sessions if it is logged in still, if not then send 404.
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
+
+});
