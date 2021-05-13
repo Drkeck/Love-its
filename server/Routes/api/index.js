@@ -1,6 +1,6 @@
 const router = require('express').router();
 
-const loveItsApi = require('./loveItsApi');
-const userApi = require('./usersApi');
+const loveItsApi = require('./usersApi');
+const userApi = require('./loveitsApi');
 
-module.exports = { loveItsApi, userApi }
+module.exports = router
