@@ -89,3 +89,27 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// it is time to destroy the little profile you spent 5 minutes creating.. or 10 minutes.. or the account you spent years in for some reason.
+router.delete('/:id', (req, res) => {
+
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+
+            res.status(404).json({ message: 'no user here under this id. maybe that last button did it..'});
+            return
+        }
+
+        res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+module.exports = router
